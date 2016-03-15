@@ -13,6 +13,8 @@ var paths = {
 	includesFolder: './server/includes/'
 };
 
+gulp.task('default', ['serve']);
+
 gulp.task('style', function() {
 	console.log('style task has been run');
 	gulp.src(paths.jsFiles)
