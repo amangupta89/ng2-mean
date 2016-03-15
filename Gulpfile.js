@@ -3,11 +3,19 @@ var jshint = require('gulp-jshint');
 var jscs = require('gulp-jscs');
 var nodemon = require('gulp-nodemon');
 
-var jsFiles = ['*.js', 'src/**/*.js'];
+var paths = {
+	jsFiles: ['*.js', 'src/**/*.js'],
+	bowerFile: './bower.json',
+	vendor: './server/public/vendor',
+	ignorePath: '../public',
+	customFiles: ['./server/public/css/**/*.css', './server/public/js/**/*.js'],
+	layout: './server/includes/layout.jade',
+	includesFolder: './server/includes/'
+};
 
 gulp.task('style', function() {
 	console.log('style task has been run');
-	gulp.src(jsFiles)
+	gulp.src(paths.jsFiles)
 		.pipe(jshint())
 		.pipe(jshint.reporter('jshint-stylish', {
 			verbose: true
@@ -20,29 +28,31 @@ gulp.task('inject', function() {
 	var wiredep = require('wiredep').stream;
 	var inject = require('gulp-inject');
 	var options = {
-		bowerJson: require('./bower.json'),
-		directory: './server/public/vendor',
-		ignorePath: '../public'
+		bowerJson: require(paths.bowerFile),
+		directory: paths.vendor,
+		ignorePath: paths.ignorePath
 	};
-	var injectSrc = gulp.src(['./server/public/css/*.css', './server/public/js/*.js'], {read: false});
+	var injectSrc = gulp.src(paths.customFiles, {read: false});
 	var injectOptions = {
-		ignorePath: '../public'
+		ignorePath: paths.ignorePath
 	};
 
-	return gulp.src('./server/includes/layout.jade')
+	return gulp.src(paths.layout)
 		.pipe(wiredep(options))
 		.pipe(inject(injectSrc, injectOptions))
-		.pipe(gulp.dest('./server/includes/'));
+		.pipe(gulp.dest(paths.includesFolder));
 });
 
 gulp.task('serve', ['style', 'inject'], function() {
 	var options = {
 		script: 'server.js',
-		delayTime: 1,
+		tasks: ['style', 'inject'],
+		delayTime: 0.3,
 		env: {
 			'PORT': 3000
 		},
-		watch: jsFiles
+		watch: [paths.jsFiles, paths.customFiles],
+		livereload: true
 	};
 
 	return nodemon(options)
