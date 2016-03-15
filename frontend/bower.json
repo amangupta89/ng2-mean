@@ -1,0 +1,50 @@
+{
+  "name": "angular2-seed",
+  "description": "A simple starter Angular2 project",
+  "main": "",
+  "authors": [
+    "Rob Wormald <robwormald@gmail.com>",
+    "PatrickJS <github@gdi2290.com>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "Angular2",
+    "angular2-seed",
+    "official",
+    "angular",
+    "2",
+    "seed",
+    "official",
+    "angular2",
+    "seed"
+  ],
+  "homepage": "https://github.com/pjlamb12/ng2-mean",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.6",
+    "font-awesome": "^4.5.0"
+  },
+  "overrides": {
+    "bootstrap": {
+      "main": [
+        "dist/js/bootstrap.min.js",
+        "dist/css/bootstrap.min.css",
+        "less/bootstrap.less"
+      ]
+    },
+    "font-awesome": {
+      "main": [
+        "less/font-awesome.less",
+        "css/font-awesome.min.css",
+        "scss/font-awesome.scss"
+      ]
+    }
+  }
+}

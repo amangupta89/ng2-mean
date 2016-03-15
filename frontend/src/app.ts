@@ -7,8 +7,8 @@ import {BaseApp} from './app/base-app';
 
 
 bootstrap(BaseApp, [
-  HTTP_PROVIDERS,
-  ROUTER_PROVIDERS,
-  provide(LocationStrategy, {useClass: HashLocationStrategy})
+	HTTP_PROVIDERS,
+	ROUTER_PROVIDERS,
+	provide(LocationStrategy, {useClass: HashLocationStrategy})
 ])
 .catch(err => console.error(err));
