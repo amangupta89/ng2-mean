@@ -6,18 +6,18 @@ import {About} from './components/about/about';
 import {RepoBrowser} from './components/repo-browser/repo-browser';
 
 @Component({
-  selector: 'seed-app',
+  selector: 'base-app',
   providers: [],
   pipes: [],
   directives: [ROUTER_DIRECTIVES],
-  templateUrl: 'app/seed-app.html',
+  templateUrl: 'app/base-app.html',
 })
 @RouteConfig([
   new Route({ path: '/home',       component: Home,        name: 'Home', useAsDefault: true }),
   new Route({ path: '/about',      component: About,       name: 'About' }),
   new Route({ path: '/github/...', component: RepoBrowser, name: 'RepoBrowser' }),
 ])
-export class SeedApp {
+export class BaseApp {
 
   constructor() {}
 
