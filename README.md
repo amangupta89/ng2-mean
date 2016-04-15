@@ -2,8 +2,11 @@
 MEAN stack using Angular 2
 
 ## Getting Started
-To get started, run `npm install`, `bower install`, and then in your terminal run `gulp serve`. Then open another terminal window and run `npm start`. 
+To get started, run `npm install`, `bower install`, and then in your terminal run `gulp serve`. This will get the server running on port 3000 by default.
 
-`http://localhost:3000` is the server returning the index file, and `http://localhost:8080` is the landing for the Angular 2 app.
+Passport-local is being used for authentication. I'm working on user management and authentication on the front end. Logging in works, but it's lost on a browser refresh. I need to work through persisting that.
 
-I'm working on trying to get everything to run on one server, like I have in other MEAN stack apps, but not sure where to go from here. Any help is appreciated.
+I've also extended the built in Angular 2 Router Outlet to require authentication to go to certain routes. This works, but it won't work when returning an observable from a service that calls to the servers. It only works if you have a locally stored `loggedIn` variable that you manage.
+
+## TODO
+As I'm new to full stack development, I'm open to suggestions for authentication strategies. I like the simplicity of `passport-local`, but if there's a better way to do user authentication that allows to pass around information about the user and keep track of authentication I am open. The only way I've previously kept track of a user with `passport-local` is by appending the user object to the body of the document when the server returns the layout view, and then in the Angular app checking for that object. However, that seems a little janky, and if there's a better way to handle user management I'd love to hear and learn. Any input is welcome.
