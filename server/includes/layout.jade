@@ -1,0 +1,50 @@
+doctype
+html
+	head
+		title NG2 MEAN
+		base(href="/")
+		//- bower:css
+		link(rel='stylesheet', href='/vendor/bootstrap/dist/css/bootstrap.min.css')
+		link(rel='stylesheet', href='/vendor/font-awesome/css/font-awesome.min.css')
+		link(rel='stylesheet', href='/vendor/metisMenu/dist/metisMenu.css')
+		link(rel='stylesheet', href='/vendor/bootstrap-social/bootstrap-social.css')
+		//- endbower
+		//- inject:css
+
+		link(rel="stylesheet", href="/css/1-theme.css")
+
+		//- endinject
+		script(src="/es6-shim/es6-shim.min.js")
+		script(src="/systemjs/dist/system-polyfills.js")
+		script(src="/angular2/es6/dev/src/testing/shims_for_IE.js")
+		script(src="angular2/bundles/angular2-polyfills.js")
+		script(src="systemjs/dist/system.src.js")
+		script(src="rxjs/bundles/Rx.js")
+		script(src="angular2/bundles/angular2.dev.js")
+		script(src="angular2/bundles/router.dev.js")
+		script(src="angular2/bundles/http.dev.js")
+
+		script(type="text/javascript").
+			System.config({
+				packages: {
+					app: {
+						format: 'register',
+						defaultExtension: 'js'
+					}
+				}
+			});
+			System.import('app/main');
+	body
+		div(id="wrapper")
+			block main-content
+
+		//- bower:js
+		script(src='/vendor/jquery/dist/jquery.js')
+		script(src='/vendor/bootstrap/dist/js/bootstrap.min.js')
+		script(src='/vendor/metisMenu/dist/metisMenu.js')
+		//- endbower
+		//- inject:js
+
+		script(src="/js/1-theme.js")
+
+		//- endinject
