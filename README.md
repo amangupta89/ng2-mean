@@ -4,6 +4,10 @@ MEAN stack using Angular 2
 ## Getting Started
 To get started, run `npm install`, `bower install`, and then in your terminal run `gulp serve`. This will get the server running on port 3000 by default.
 
+Also, I can't get `gulp-typescript` to compile the `.ts` files without putting the other `gulp` tasks in an infinite loop. I'm still working on that part. So for now you manually have to compile the `.ts` files in the terminal (`tsc`).
+
+
+## About
 Passport-local is being used for authentication. I'm working on user management and authentication on the front end. Logging in works, but it's lost on a browser refresh. I need to work through persisting that.
 
 I've also extended the built in Angular 2 Router Outlet to require authentication to go to certain routes. This works, but it won't work when returning an observable from a service that calls to the servers. It only works if you have a locally stored `loggedIn` variable that you manage.
