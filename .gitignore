@@ -3,3 +3,4 @@ node_modules/
 vendor/
 app/services/config.ts
 server/public/app/
+server/config/config.js
