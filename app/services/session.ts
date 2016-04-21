@@ -1,23 +1,31 @@
 import {Injectable} from 'angular2/core';
-import {Http, Response, Headers} from 'angular2/http';
-import 'rxjs/add/operator/map';
+
+import {AppConfig} from '../services/config';
+
+declare var Auth0Lock: any;
 
 @Injectable()
 export class Session {
-	private loggedIn: boolean = false;
+	constructor(private _config: AppConfig) {}
 
-	constructor(private _http:Http) {}
+	lock = new Auth0Lock(this._config.getClientId(), this._config.getDomain());
 
-	login(username, password) {
-		var headers = new Headers();
-		headers.append('Content-Type', 'application/json');
-		return this._http.post('/login', JSON.stringify({username, password}), {headers}).map((res: Response) => res.json()).subscribe(data => {
-			console.log('data: ', data);
-			this.loggedIn = data.success;
+	login() {
+		this.lock.show((error: string, profile: Object, id_token: string) => {
+			if (error) {
+				console.log(error);
+			}
+			// We get a profile object for the user from Auth0
+			localStorage.setItem('profile', JSON.stringify(profile));
+			// We also get the user's JWT
+			localStorage.setItem('id_token', id_token);
 		});
 	}
 
-	isLoggedIn() {
-		return this.loggedIn;
-	}
+	logout() {
+		// To log out, we just need to remove
+		// the user's profile and token
+		localStorage.removeItem('profile');
+		localStorage.removeItem('id_token');
+	 }
 }

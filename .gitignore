@@ -1,3 +1,5 @@
 node_modules/
 .DS_Store
 vendor/
+app/services/config.ts
+server/public/app/

@@ -14,7 +14,4 @@ export class Dashboard implements OnInit {
 
 	ngOnInit() {
 	}
-	doLogin() {
-		this._session.login('pjlamb12', 'testpassword');
-	}
 }

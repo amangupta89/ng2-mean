@@ -1,7 +1,7 @@
 import {Component} from 'angular2/core';
-import {Router, Route, RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
+import {Router, Route, RouteConfig, RouterOutlet, ROUTER_DIRECTIVES} from 'angular2/router';
 
-import {AuthenticatedRouterOutlet} from './directives/authenticated-router-outlet';
+// import {AuthenticatedRouterOutlet} from './directives/authenticated-router-outlet';
 import {Home} from './components/home/home';
 import {Login} from './components/login/login';
 import {Dashboard} from './components/dashboard/dashboard';
@@ -9,7 +9,7 @@ import {Dashboard} from './components/dashboard/dashboard';
 @Component({
 	selector: 'my-app',
 	templateUrl: './app.html',
-	directives: [AuthenticatedRouterOutlet]
+	directives: [RouterOutlet]
 })
 @RouteConfig([
 	new Route({ path: '/', component: Home, name: 'Home', useAsDefault:true }),

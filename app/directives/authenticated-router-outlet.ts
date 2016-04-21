@@ -36,7 +36,7 @@ export class AuthenticatedRouterOutlet extends RouterOutlet {
 	}
 
 	_canActivate(url) {
-		console.log('loggedIn: ', this.session.isLoggedIn());
-		return this.publicRoutes.indexOf(url) !== -1 || this.session.isLoggedIn();
+		// console.log('loggedIn: ', this.session.isLoggedIn());
+		// return this.publicRoutes.indexOf(url) !== -1 || this.session.isLoggedIn();
 	}
 }

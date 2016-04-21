@@ -12,6 +12,6 @@ export class Login {
 	}
 
 	doLogin(form: any) {
-		this._session.login(form.username, form.password);
+		// this._session.login(form.username, form.password);
 	}
 }
