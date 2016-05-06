@@ -5,6 +5,7 @@ import {Session} from '../../services/session';
 import {UserService} from '../../services/user';
 
 @Component({
+	// moduleId: module.id,
 	selector: 'home',
 	templateUrl: '/components/home/home.html',
 	directives: [ROUTER_DIRECTIVES],
@@ -15,7 +16,9 @@ export class Home implements OnInit {
 	}
 
 	ngOnInit() {
+		console.log('AppComponent inited');
 	}
+
 	doLogin() {
 		this._session.login();
 	}

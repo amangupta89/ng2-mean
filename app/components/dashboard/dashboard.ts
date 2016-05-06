@@ -12,5 +12,7 @@ export class Dashboard implements OnInit {
 	}
 
 	ngOnInit() {
+		console.log('AppComponent inited');
 	}
+
 }
