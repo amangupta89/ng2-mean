@@ -1,7 +1,7 @@
-import {provide} from 'angular2/core';
-import {bootstrap} from 'angular2/platform/browser';
-import {HTTP_PROVIDERS, Http} from 'angular2/http';
-import {ROUTER_PROVIDERS, PathLocationStrategy, LocationStrategy} from 'angular2/router';
+import {provide} from '@angular/core';
+import {bootstrap} from '@angular/platform-browser-dynamic';
+import {HTTP_PROVIDERS, Http} from '@angular/http';
+import {ROUTER_PROVIDERS} from '@angular/router';
 import {AppComponent} from './app';
 import {Session} from './services/session';
 import {AppConfig} from './services/config';
@@ -12,7 +12,7 @@ bootstrap(AppComponent, [
 		AppConfig,
 		HTTP_PROVIDERS,
 		ROUTER_PROVIDERS,
-		provide(LocationStrategy, {useClass: PathLocationStrategy}),
+		// provide(LocationStrategy, {useClass: PathLocationStrategy}),
 		provide(AuthHttp, {
 			useFactory: (http) => {
 				return new AuthHttp(new AuthConfig(), http);

@@ -1,5 +1,5 @@
-import {Directive, ElementRef, DynamicComponentLoader, Attribute} from 'angular2/core';
-import {RouterOutlet, Router, ComponentInstruction} from 'angular2/router';
+import {Directive, ElementRef, DynamicComponentLoader, Attribute} from '@angular/core';
+import {RouterOutlet, Router, ComponentInstruction} from '@angular/router-deprecated';
 
 import {Session} from '../services/session';
 

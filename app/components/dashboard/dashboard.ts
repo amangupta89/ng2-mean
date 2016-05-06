@@ -1,5 +1,4 @@
-import {Component, OnInit} from 'angular2/core';
-import {CanActivate} from 'angular2/router';
+import {Component, OnInit} from '@angular/core';
 
 import {Session} from '../../services/session';
 

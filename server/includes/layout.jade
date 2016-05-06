@@ -15,14 +15,10 @@ html
 
 		//- endinject
 		script(src="/es6-shim/es6-shim.min.js")
-		script(src="/systemjs/dist/system-polyfills.js")
-		script(src="/angular2/es6/dev/src/testing/shims_for_IE.js")
-		script(src="angular2/bundles/angular2-polyfills.js")
+
+		script(src="zone.js/dist/zone.js")
+		script(src="reflect-metadata/Reflect.js")
 		script(src="systemjs/dist/system.src.js")
-		script(src="rxjs/bundles/Rx.js")
-		script(src="angular2/bundles/angular2.dev.js")
-		script(src="angular2/bundles/router.dev.js")
-		script(src="angular2/bundles/http.dev.js")
 
 		//- Auth0 Lock script
 		script(src="//cdn.auth0.com/js/lock-9.0.min.js")
@@ -30,23 +26,9 @@ html
 		//- Setting the right viewport
 		meta(name="viewport", content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no")
 
+		script(src="/js/system.config.js")
 		script(type="text/javascript").
-			System.config({
-				defaultJSExtensions: true,
-				packages: {
-					"app": {
-						format: 'register',
-						defaultExtension: 'js'
-					},
-					"/angular2-jwt": {
-						defaultExtension: 'js'
-					}
-				},
-				map: {
-					"angular2-jwt": "angular2-jwt/angular2-jwt"
-				}
-			});
-			System.import('app/main');
+			System.import('app').catch(function(err) { console.err(err); });
 	body
 		div(id="wrapper")
 			block main-content
@@ -59,5 +41,7 @@ html
 		//- inject:js
 
 		script(src="/js/1-theme.js")
+
+		script(src="/js/system.config.js")
 
 		//- endinject
