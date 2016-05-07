@@ -8,13 +8,13 @@ module.exports = function() {
 		email: {type: String, required: '{PATH} is required!', unique: true},
 		username: {type: String, required: '{PATH} is required!', unique: true},
 		salt: {type: String, required: '{PATH} is required!'},
-		hashed_pwd: {type: String, required: '{PATH} is required!'},
+		hashedPwd: {type: String, required: '{PATH} is required!'},
 		roles: [String]
 	});
 
 	userSchema.methods = {
 		authenticate: function(pwdToMatch) {
-			return encrypt.hashPwd(this.salt, pwdToMatch) === this.hashed_pwd;
+			return encrypt.hashPwd(this.salt, pwdToMatch) === this.hashedPwd;
 		},
 		hasRole: function(role) {
 			return this.roles.indexOf(role) > -1;
@@ -22,4 +22,4 @@ module.exports = function() {
 	};
 
 	mongoose.model('User', userSchema);
-}
+};

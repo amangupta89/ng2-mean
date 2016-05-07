@@ -2,6 +2,7 @@ import {provide} from '@angular/core';
 import {bootstrap} from '@angular/platform-browser-dynamic';
 import {HTTP_PROVIDERS, Http} from '@angular/http';
 import {ROUTER_PROVIDERS} from '@angular/router';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import {AppComponent} from './app';
 import {Session} from './services/session';
 import {AppConfig} from './services/config';
@@ -12,7 +13,7 @@ bootstrap(AppComponent, [
 		AppConfig,
 		HTTP_PROVIDERS,
 		ROUTER_PROVIDERS,
-		// provide(LocationStrategy, {useClass: PathLocationStrategy}),
+		provide(LocationStrategy, {useClass: HashLocationStrategy}),
 		provide(AuthHttp, {
 			useFactory: (http) => {
 				return new AuthHttp(new AuthConfig(), http);

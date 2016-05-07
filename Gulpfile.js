@@ -7,14 +7,15 @@ var tsProject = ts.createProject('tsconfig.json');
 var Q = require('q');
 
 var paths = {
-	jsFiles: ['*.js', 'src/**/*.js'],
+	jsFiles: ['*.js', 'server/**/*.js', '!./server/public/app/**/*.js', '!./server/public/vendor/**/*.js'],
 	bowerFile: './bower.json',
 	vendor: './server/public/vendor',
 	ignorePath: '../public',
-	ignorePath2: '/server/public',
+	ignorePath2: '/server/public/',
 	customFiles: ['./server/public/css/**/*.css', './server/public/js/**/*.js'],
 	layout: './server/includes/layout.jade',
-	typescript: ['app/main.ts', 'app/app.ts', 'app/components/**/*.ts'],
+	typescript: ['app/**/*.ts'],
+	typescriptDest: './server/public/app',
 	includesFolder: './server/includes/'
 };
 
@@ -50,15 +51,24 @@ gulp.task('inject', function() {
 		.pipe(gulp.dest(paths.includesFolder));
 });
 
+gulp.task('typescript', function() {
+	var result = tsProject.src(paths.typescript)
+		.pipe(ts(tsProject));
+
+	return result.js.pipe(gulp.dest(paths.typescriptDest));
+});
+
+// gulp.task('serve', ['style', 'typescript', 'inject'], function() {
 gulp.task('serve', ['style', 'inject'], function() {
 	var options = {
 		script: 'server.js',
 		tasks: ['style', 'inject'],
+		// tasks: ['style', 'typescript', 'inject'],
 		delayTime: 0.3,
 		env: {
 			'PORT': 3000
 		},
-		watch: [paths.jsFiles, paths.customFiles],
+		watch: [paths.jsFiles, paths.customFiles, paths.typescript],
 		livereload: true
 	};
 

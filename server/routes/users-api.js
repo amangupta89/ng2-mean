@@ -10,4 +10,4 @@ module.exports = function(app) {
 	app.get('/api/user-list', auth.authCheck, function(req, res) {
 		res.send(users);
 	});
-}
+};

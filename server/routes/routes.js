@@ -7,4 +7,4 @@ module.exports = function(app) {
 	});
 
 	require('./users-api')(app);
-}
+};

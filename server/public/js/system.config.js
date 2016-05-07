@@ -3,6 +3,7 @@
  * Adjust as necessary for your application needs.
  * Override at the last minute with global.filterSystemConfig (as plunkers do)
  */
+ var System;
 (function(global) {
 
   // map tells the System loader where to look for things
@@ -11,7 +12,7 @@
     'rxjs':                       'rxjs',
     // 'angular2-in-memory-web-api': 'angular2-in-memory-web-api',
     '@angular':                   '@angular',
-    "angular2-jwt":               "angular2-jwt/angular2-jwt"
+    'angular2-jwt':               'angular2-jwt/angular2-jwt'
   };
 
   // packages tells the System loader how to load when no filename and/or no extension
@@ -43,7 +44,7 @@
   var config = {
     map: map,
     packages: packages
-  }
+  };
 
   System.config(config);
 

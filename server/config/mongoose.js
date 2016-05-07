@@ -8,4 +8,4 @@ module.exports = function(config) {
 	db.once('open', function callback() {
 		console.log('ng2-mean db opened');
 	});
-}
+};

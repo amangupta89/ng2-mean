@@ -5,7 +5,7 @@ var mongoose = require('mongoose'),
 exports.createUser = function(req, res, next) {
 	var userData = req.body;
 	userData.salt = encrypt.createSalt();
-	userData.hashed_pwd = encrypt.hashPwd(userData.salt, userData.password);
+	userData.hashedPwd = encrypt.hashPwd(userData.salt, userData.password);
 	User.create(userData, function(err, user) {
 		if(err) {
 			if(err.toString().indexOf('E11000') > -1 ) {
@@ -24,7 +24,7 @@ exports.createUser = function(req, res, next) {
 exports.updateUser = function(req, res) {
 	var userUpdates = req.body;
 
-	if( req.user._id != userUpdates._id) {
+	if( req.user._id !== userUpdates._id) {
 		res.status(403);
 		return res.end();
 	}
@@ -34,7 +34,7 @@ exports.updateUser = function(req, res) {
 	req.user.username = userUpdates.username;
 	if( userUpdates.password && userUpdates.password.length > 0 ) {
 		req.user.salt = encrypt.createSalt();
-		req.user.hashed_pwd = encrypt.hashPwd(req.user.salt, userUpdates.password)
+		req.user.hashedPwd = encrypt.hashPwd(req.user.salt, userUpdates.password);
 	}
 	req.user.email = userUpdates.email;
 	req.user.roles = userUpdates.roles;
@@ -42,7 +42,7 @@ exports.updateUser = function(req, res) {
 	req.user.save(function(err) {
 		if(err) { res.status(400); return res.send({ reason: err.toString() }); }
 		res.send(req.user);
-	})
+	});
 };
 
 exports.getUsers = function(req, res) {
@@ -57,7 +57,7 @@ exports.getUsers = function(req, res) {
 			res.send(collection);
 		});
 	}
-}
+};
 
 exports.getUserById = function(req, res) {
 	User.findOne({_id: req.params.id}).exec(function(err, user) {
@@ -66,4 +66,4 @@ exports.getUserById = function(req, res) {
 		}
 		res.send(user);
 	});
-}
+};
